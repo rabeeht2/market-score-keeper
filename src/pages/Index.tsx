@@ -88,20 +88,20 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <BarChart3 className="h-8 w-8 text-primary" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-profit bg-clip-text text-transparent">
+    <div className="min-h-screen bg-background p-2 flex flex-col">
+      <div className="max-w-md mx-auto w-full flex flex-col h-screen">
+        {/* Compact Header */}
+        <div className="text-center mb-3">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <BarChart3 className="h-6 w-6 text-primary" />
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-profit bg-clip-text text-transparent">
               P&L Tracker
             </h1>
           </div>
           
-          <div className="mb-6">
-            <div className="text-sm text-muted-foreground mb-2">Total P&L</div>
-            <div className={`text-4xl font-bold ${
+          <div className="mb-3">
+            <div className="text-xs text-muted-foreground mb-1">Total P&L</div>
+            <div className={`text-2xl font-bold ${
               totalPnL > 0 ? 'text-profit' : 
               totalPnL < 0 ? 'text-loss' : 'text-neutral'
             }`}>
@@ -110,29 +110,33 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Summary Statistics */}
-        <SummaryStats trades={trades} />
+        {/* Compact Summary Statistics */}
+        <div className="mb-3">
+          <SummaryStats trades={trades} />
+        </div>
 
-        {/* Trading Calendar */}
-        <TradingCalendar
-          trades={trades}
-          currentDate={currentDate}
-          onDateSelect={handleDateSelect}
-          onPrevMonth={handlePrevMonth}
-          onNextMonth={handleNextMonth}
-        />
+        {/* Compact Trading Calendar */}
+        <div className="flex-1 min-h-0">
+          <TradingCalendar
+            trades={trades}
+            currentDate={currentDate}
+            onDateSelect={handleDateSelect}
+            onPrevMonth={handlePrevMonth}
+            onNextMonth={handleNextMonth}
+          />
+        </div>
 
-        {/* Add Trade Button */}
-        <div className="fixed bottom-6 right-6">
+        {/* Compact Add Trade Button */}
+        <div className="absolute bottom-4 right-4">
           <Button
             size="lg"
-            className="h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all bg-primary hover:bg-primary/90"
+            className="h-12 w-12 rounded-full shadow-lg hover:shadow-xl transition-all bg-primary hover:bg-primary/90"
             onClick={() => {
               setSelectedDate(new Date());
               setIsTradeModalOpen(true);
             }}
           >
-            <Plus className="h-6 w-6" />
+            <Plus className="h-5 w-5" />
           </Button>
         </div>
 

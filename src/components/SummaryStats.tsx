@@ -27,58 +27,58 @@ const SummaryStats = ({ trades }: SummaryStatsProps) => {
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div className="grid grid-cols-2 gap-2">
       <Card className="bg-card/50 border-profit/20">
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-muted-foreground">
-            Total Profit
+        <CardHeader className="pb-1 pt-2 px-2">
+          <CardTitle className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+            <TrendingUp className="h-3 w-3 text-profit" />
+            Profit
           </CardTitle>
-          <TrendingUp className="h-4 w-4 text-profit" />
         </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold text-profit">
+        <CardContent className="px-2 pb-2">
+          <div className="text-sm font-bold text-profit">
             {formatCurrency(totalProfit)}
           </div>
         </CardContent>
       </Card>
 
       <Card className="bg-card/50 border-loss/20">
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-muted-foreground">
-            Total Loss
+        <CardHeader className="pb-1 pt-2 px-2">
+          <CardTitle className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+            <TrendingDown className="h-3 w-3 text-loss" />
+            Loss
           </CardTitle>
-          <TrendingDown className="h-4 w-4 text-loss" />
         </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold text-loss">
+        <CardContent className="px-2 pb-2">
+          <div className="text-sm font-bold text-loss">
             {formatCurrency(totalLoss)}
           </div>
         </CardContent>
       </Card>
 
       <Card className={`bg-card/50 ${netPnL >= 0 ? 'border-profit/20' : 'border-loss/20'}`}>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-muted-foreground">
+        <CardHeader className="pb-1 pt-2 px-2">
+          <CardTitle className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+            <Calculator className={`h-3 w-3 ${netPnL >= 0 ? 'text-profit' : 'text-loss'}`} />
             Net P&L
           </CardTitle>
-          <Calculator className={`h-4 w-4 ${netPnL >= 0 ? 'text-profit' : 'text-loss'}`} />
         </CardHeader>
-        <CardContent>
-          <div className={`text-2xl font-bold ${netPnL >= 0 ? 'text-profit' : 'text-loss'}`}>
+        <CardContent className="px-2 pb-2">
+          <div className={`text-sm font-bold ${netPnL >= 0 ? 'text-profit' : 'text-loss'}`}>
             {formatCurrency(netPnL)}
           </div>
         </CardContent>
       </Card>
 
       <Card className="bg-card/50 border-primary/20">
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-muted-foreground">
-            Total Trades
+        <CardHeader className="pb-1 pt-2 px-2">
+          <CardTitle className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+            <BarChart3 className="h-3 w-3 text-primary" />
+            Trades
           </CardTitle>
-          <BarChart3 className="h-4 w-4 text-primary" />
         </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold text-primary">
+        <CardContent className="px-2 pb-2">
+          <div className="text-sm font-bold text-primary">
             {totalTrades}
           </div>
         </CardContent>
