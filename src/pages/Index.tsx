@@ -89,7 +89,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background p-2 flex flex-col">
-      <div className="max-w-md mx-auto w-full flex flex-col" style={{ height: '100vh' }}>
+      <div className="max-w-md mx-auto w-full flex flex-col" style={{ height: 'calc(100vh - 2rem)' }}>
         {/* Compact Header */}
         <div className="text-center mb-2">
           <div className="flex items-center justify-center gap-2 mb-1">
@@ -115,8 +115,8 @@ const Index = () => {
           <SummaryStats trades={trades} />
         </div>
 
-        {/* Trading Calendar with visible scroll indicator */}
-        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
+        {/* Trading Calendar with visible scroll indicator and bottom gap */}
+        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent mb-16">
           <TradingCalendar
             trades={trades}
             currentDate={currentDate}
