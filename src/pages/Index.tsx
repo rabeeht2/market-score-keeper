@@ -89,19 +89,19 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background p-2 flex flex-col">
-      <div className="max-w-md mx-auto w-full flex flex-col h-screen">
+      <div className="max-w-md mx-auto w-full flex flex-col" style={{ height: '100vh' }}>
         {/* Compact Header */}
-        <div className="text-center mb-3">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <BarChart3 className="h-6 w-6 text-primary" />
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-profit bg-clip-text text-transparent">
+        <div className="text-center mb-2">
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <BarChart3 className="h-5 w-5 text-primary" />
+            <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-profit bg-clip-text text-transparent">
               P&L Tracker
             </h1>
           </div>
           
-          <div className="mb-3">
+          <div className="mb-2">
             <div className="text-xs text-muted-foreground mb-1">Total P&L</div>
-            <div className={`text-2xl font-bold ${
+            <div className={`text-xl font-bold ${
               totalPnL > 0 ? 'text-profit' : 
               totalPnL < 0 ? 'text-loss' : 'text-neutral'
             }`}>
@@ -111,12 +111,12 @@ const Index = () => {
         </div>
 
         {/* Compact Summary Statistics */}
-        <div className="mb-3">
+        <div className="mb-2">
           <SummaryStats trades={trades} />
         </div>
 
-        {/* Compact Trading Calendar */}
-        <div className="flex-1 min-h-0">
+        {/* Trading Calendar with visible scroll indicator */}
+        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
           <TradingCalendar
             trades={trades}
             currentDate={currentDate}
@@ -130,13 +130,13 @@ const Index = () => {
         <div className="absolute bottom-4 right-4">
           <Button
             size="lg"
-            className="h-12 w-12 rounded-full shadow-lg hover:shadow-xl transition-all bg-primary hover:bg-primary/90"
+            className="h-10 w-10 rounded-full shadow-lg hover:shadow-xl transition-all bg-primary hover:bg-primary/90"
             onClick={() => {
               setSelectedDate(new Date());
               setIsTradeModalOpen(true);
             }}
           >
-            <Plus className="h-5 w-5" />
+            <Plus className="h-4 w-4" />
           </Button>
         </div>
 

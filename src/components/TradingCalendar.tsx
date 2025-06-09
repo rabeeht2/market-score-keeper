@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
@@ -82,13 +83,14 @@ const TradingCalendar = ({
             const dailyPnL = getDailyPnL(date);
             const hasTrades = dailyPnL.trades.length > 0;
             const pnlAmount = dailyPnL.totalPnL;
+            const tradeCount = dailyPnL.trades.length;
             
             return (
               <Button
                 key={date.toISOString()}
                 variant="ghost"
                 className={`
-                  h-12 p-1 flex flex-col items-center justify-center text-xs
+                  h-14 p-1 flex flex-col items-center justify-center text-xs
                   hover:bg-accent/50 transition-colors
                   ${isToday(date) ? 'ring-1 ring-primary' : ''}
                   ${hasTrades ? 'bg-card border' : ''}
@@ -99,12 +101,17 @@ const TradingCalendar = ({
                   {format(date, 'd')}
                 </span>
                 {hasTrades && (
-                  <span className={`text-xs font-bold ${
-                    pnlAmount > 0 ? 'text-profit' : 
-                    pnlAmount < 0 ? 'text-loss' : 'text-neutral'
-                  }`}>
-                    {pnlAmount > 0 ? '+' : ''}{formatCurrency(pnlAmount)}
-                  </span>
+                  <>
+                    <span className={`text-xs font-bold ${
+                      pnlAmount > 0 ? 'text-profit' : 
+                      pnlAmount < 0 ? 'text-loss' : 'text-neutral'
+                    }`}>
+                      {pnlAmount > 0 ? '+' : ''}{formatCurrency(pnlAmount)}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {tradeCount} trade{tradeCount > 1 ? 's' : ''}
+                    </span>
+                  </>
                 )}
               </Button>
             );
